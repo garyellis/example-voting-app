@@ -20,6 +20,9 @@ spec:
       branchRegexInput: regex
       modifiedFilesGlob: worker/**
       provider: github
+      context: github
+      verified: true
+      status: verified
   specTemplate:
     location: git
     repo: CF_REPO_OWNER/example-voting-app

@@ -13,6 +13,7 @@ steps:
     title: Cloning main repository...
     type: git-clone
     repo: '${{GITHUB_ORG}}/example-voting-app'
+    revision: prep
     git: github
 
 # Set Kubernetes Name Here
@@ -30,7 +31,7 @@ steps:
     stage: "Prepare Kubernetes Cluster"
     commands:
       - kubectl config use-context '${{KUBERNETES_CLUSTER_NAME}}'
-      - kubectl create namespace ${{KUBERNETES_NAMESPACE}}
+      - kubectl create ns testns --output=yaml --dry-run=true | kubectl apply -f -
 
 # Create Image Pull Secret
 
@@ -38,7 +39,7 @@ steps:
     image: codefresh/cli
     stage: "Prepare Kubernetes Cluster"
     commands:
-      - codefresh generate image-pull-secret --cluster '${{KUBERNETES_CLUSTER_NAME}}' --namespace ${{KUBERNETES_NAMESPACE}} --registry cfcr
+      - codefresh generate image-pull-secret --cluster '${{KUBERNETES_CLUSTER_NAME}}' --namespace ${{KUBERNETES_NAMESPACE}} --registry quayio
 
 # Replace CF_REPO_OWNER, KUBERNETES_CLUSTER_NAME and KUBERNETES_NAMESPACE in specs files and Deploy Pipelines
 
