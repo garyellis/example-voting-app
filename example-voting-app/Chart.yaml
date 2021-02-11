@@ -7,7 +7,9 @@ keywords:
 - example-voting-app
 version: 1.0.0
 sources:
-- https://github.com/codefresh-io/example-voting-app
+- https://github.com/garyellis/example-voting-app
 maintainers:
 - name: Dustin Van Buskirk
   email: dustinvb@codefresh.io
+- name: Gary Ellis
+  email: gary.luis.ellis@gmail.com
