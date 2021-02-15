@@ -6,7 +6,7 @@ keywords:
 - kubernetes
 - example-voting-app
 type: application
-version: 1.0.2
+version: 1.0.4
 sources:
 - https://github.com/garyellis/example-voting-app
 maintainers:
@@ -14,3 +14,32 @@ maintainers:
   email: dustinvb@codefresh.io
 - name: Gary Ellis
   email: gary.luis.ellis@gmail.com
+
+dependencies:
+- name: postgresql
+  version: 10.3.1
+  repository: https://charts.bitnami.com/bitnami/
+  condition: postgresql.enabled
+  tags:
+  - db
+- name: redis
+  version: 12.7.4
+  repository: https://charts.bitnami.com/bitnami/
+  condition: redis.enabled
+  tags:
+  - queue
+- name: result
+  version: 1.0.0
+  repository: file://local-charts/result
+  tags:
+  - node
+- name: vote
+  version: 1.0.0
+  repository: file://local-charts/vote
+  tags:
+  - python
+- name: worker
+  version: 1.0.1
+  repository: file://local-charts/worker
+  tags:
+  - dotnet

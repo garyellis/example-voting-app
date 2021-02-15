@@ -15,3 +15,14 @@ postgresql:
 redis:
   enabled: true
   usePassword: false
+
+
+global:
+  image:
+    tag: ""
+  pullSecrets: []
+
+
+  postgresql:
+    username: ""
+    password: ""
