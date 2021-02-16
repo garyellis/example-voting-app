@@ -1,5 +1,5 @@
 apiVersion: v2
 description: A Helm chart for worker service of Docker example-voting-app
 name: worker
-version: 1.0.6
+version: 1.0.7
 type: application
