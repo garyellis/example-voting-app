@@ -1,0 +1,17 @@
+# This is a service gateway to the replica set created by the deployment.
+# Take a look at the deployment.yaml for general notes about this chart.
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "vote.fullname" . }}
+  labels:
+    {{- include "vote.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 80
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "vote.selectorLabels" . | nindent 4 }}

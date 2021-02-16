@@ -1,0 +1,33 @@
+---
+global:
+  # postgress and redis storageclass
+  storageClass: standard
+
+result:
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/tls-acme: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hosts:
+      - host: result-prod.poc.ews.works
+        paths:
+        - /
+    tls:
+      - secretName: result-prod.poc-ews-works-tls
+        hosts:
+        - result-prod.poc.ews.works
+vote:
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/tls-acme: "true"
+      cert-manager.io/cluster-issuer: letsencrypt-prod
+    hosts:
+      - host: vote-prod.poc.ews.works
+        paths:
+        - /
+    tls:
+      - secretName: vote-prod-poc-ews-works-tls
+        hosts:
+          - vote-prod.poc.ews.works

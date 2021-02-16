@@ -6,7 +6,6 @@ metadata:
   labels:
     tags:
       - demo
-
   project: example-voting-app
 spec:
   triggers:

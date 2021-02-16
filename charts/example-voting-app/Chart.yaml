@@ -1,0 +1,45 @@
+apiVersion: v2
+description: Helm Chart for Docker example-voting-app
+name: example-voting-app
+keywords:
+- codefresh
+- kubernetes
+- example-voting-app
+type: application
+version: 1.0.6
+sources:
+- https://github.com/garyellis/example-voting-app
+maintainers:
+- name: Dustin Van Buskirk
+  email: dustinvb@codefresh.io
+- name: Gary Ellis
+  email: gary.luis.ellis@gmail.com
+
+dependencies:
+- name: postgresql
+  version: 10.3.1
+  repository: https://charts.bitnami.com/bitnami/
+  condition: postgresql.enabled
+  tags:
+  - db
+- name: redis
+  version: 12.7.4
+  repository: https://charts.bitnami.com/bitnami/
+  condition: redis.enabled
+  tags:
+  - queue
+- name: result
+  version: 1.0.6
+  repository: file://result
+  tags:
+  - node
+- name: vote
+  version: 1.0.6
+  repository: file://vote
+  tags:
+  - python
+- name: worker
+  version: 1.0.6
+  repository: file://worker
+  tags:
+  - dotnet
